@@ -9,7 +9,7 @@ of [Web3Auth Android SDK] including authentication using social logins like Goog
    
 3. Using different blockchains for fetching balance, signing a message and sending a transaction.
 
-4. Differnt blockchains supported: Eth Mainnet, Eth Goerli, Polygon Mainnet, Solana Mainnet, Solana Testnet and Solana Devnet. 
+4. Different blockchains supported: Eth Mainnet, Eth Goerli, Polygon Mainnet, Solana Mainnet, Solana Testnet and Solana Devnet. 
 
 
 ### App Architecture
