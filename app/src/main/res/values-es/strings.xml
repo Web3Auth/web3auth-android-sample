@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Web3Auth Wallet</string>
+    <string name="app_name">Web3Auth PnP Playground</string>
     <string name="login_heading">Seleccione red y Blockchain para iniciar sesión</string>
     <string name="select_network">Red Web3Auth</string>
     <string name="select_blockchain">Blockchain</string>

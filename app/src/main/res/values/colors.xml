@@ -29,4 +29,6 @@
     <color name="sign_message_rectangular_color">#FFFFFF</color>
     <color name="btn_stroke_color">#6F717A</color>
     <color name="blockchain_bg_color">#D3D3D3</color>
+    <color name="app_icon_color">#0364FF</color>
+    <color name="app_icon_bg_color">#FFFFFF</color>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Web3Auth Wallet</string>
+    <string name="app_name">Web3Auth PnP Playground</string>
     <string name="login_heading">ログインするネットワークとブロックチェーンを選択</string>
     <string name="select_network">Web3Auth ネットワーク</string>
     <string name="select_blockchain">ブロックチェーン</string>

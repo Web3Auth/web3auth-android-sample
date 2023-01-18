@@ -11,7 +11,7 @@ android {
         minSdk 26
         targetSdk 32
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.1"
         manifestPlaceholders = [
                 'torusRedirectScheme'    : 'torusapp',
                 'torusRedirectHost'      : 'org.torusresearch.web3authexample',
@@ -24,6 +24,7 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
