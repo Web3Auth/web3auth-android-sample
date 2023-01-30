@@ -146,7 +146,7 @@ class TransferAssetsActivity : AppCompatActivity() {
 
         etAmountToSend.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (s?.isNotEmpty() == true) {
+                if (s != null && s.isNotEmpty()) {
                     if (blockChain.contains(getString(R.string.solana))) {
                         totalAmountInSol = if (isUSDSelected) {
                             Web3AuthUtils.getPriceInSol(

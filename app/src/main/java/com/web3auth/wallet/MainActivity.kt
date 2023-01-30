@@ -274,7 +274,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (blockChain.contains(getString(R.string.solana))) {
-                solanaViewModel.signTransaction(NetworkUtils.getSolanaNetwork(blockChain), msg)
+                solanaViewModel.signTransaction(msg)
             } else {
                 val signatureHash = ethereumViewModel.getSignature(
                     sessionID,
