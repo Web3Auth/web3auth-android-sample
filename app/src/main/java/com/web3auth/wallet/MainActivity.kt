@@ -292,6 +292,8 @@ class MainActivity : AppCompatActivity() {
             init()
             swipeRefreshLayout.isRefreshing = false
         }
+
+        tvAddress.setOnClickListener { copyToClipboard(publicAddress) }
     }
 
     private fun setData() {
