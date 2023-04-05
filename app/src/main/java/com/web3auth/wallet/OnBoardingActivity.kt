@@ -7,14 +7,12 @@ import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.Transformation
-import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.web3auth.core.Web3Auth
 import com.web3auth.core.isEmailValid
 import com.web3auth.core.types.*
@@ -138,7 +136,7 @@ class OnBoardingActivity : AppCompatActivity() {
         web3Auth = Web3Auth(
             Web3AuthOptions(
                 context = this,
-                clientId = getString(R.string.web3auth_project_id),
+                clientId = NetworkUtils.getClientIdByNetwork(selectedNetwork),
                 network = NetworkUtils.getWebAuthNetwork(selectedNetwork),
                 redirectUrl = Uri.parse(getString(R.string.web3Auth_redirection_url)),
                 whiteLabel = WhiteLabelData(
