@@ -153,7 +153,6 @@ class MainActivity : AppCompatActivity() {
         if (!blockChain.contains(getString(R.string.solana))) {
             ethereumViewModel.isWeb3Configured.observe(this) {
                 if (it == false) {
-                    toast(getString(R.string.web3j_connection_error))
                 }
             }
 
