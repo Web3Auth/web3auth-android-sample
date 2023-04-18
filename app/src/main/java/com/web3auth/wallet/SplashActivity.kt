@@ -73,11 +73,14 @@ class SplashActivity : AppCompatActivity() {
 
     private fun setLocale(lang: String?) {
         val locale = Locale(lang)
-        Locale.setDefault(locale)
-        val config = Configuration()
-        config.locale = locale
+        if (lang != null) {
+            LocaleUtils.setLocale(this.applicationContext, lang)
+        }
+        val configuration: Configuration = this.applicationContext.resources.configuration
+        configuration.setLocale(locale)
+        configuration.setLayoutDirection(locale)
         baseContext.resources.updateConfiguration(
-            config,
+            configuration,
             baseContext.resources.displayMetrics
         )
     }

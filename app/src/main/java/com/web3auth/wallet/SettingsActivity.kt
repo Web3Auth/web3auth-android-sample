@@ -10,7 +10,6 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import com.web3auth.wallet.utils.*
 
-
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var spBlockChain: AutoCompleteTextView
@@ -63,6 +62,7 @@ class SettingsActivity : AppCompatActivity() {
             this.applicationContext.web3AuthWalletPreferences[IS_LANGUAGE_CHANGED] = true
             this.applicationContext.web3AuthWalletPreferences[LANGUAGE] =
                 languages[position]
+            LocaleUtils.setLocale(this.applicationContext, languages[position])
             restartApp()
         }
 
