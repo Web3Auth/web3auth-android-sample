@@ -1,5 +1,6 @@
 package com.web3auth.wallet
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -258,5 +259,9 @@ class OnBoardingActivity : AppCompatActivity() {
         a.duration = (initialHeight / v.context.resources.displayMetrics.density).toInt().toLong()
         v.startAnimation(a)
         ivFullLogin.animate().rotationBy(180F).setDuration(300).start()
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleUtils.onAttach(base))
     }
 }

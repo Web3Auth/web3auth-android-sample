@@ -1,5 +1,6 @@
 package com.web3auth.wallet
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -47,5 +48,9 @@ class LoginActivity : AppCompatActivity() {
             this.applicationContext.web3AuthWalletPreferences[BLOCKCHAIN] =
                 blockchains[position]
         }
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleUtils.onAttach(base))
     }
 }

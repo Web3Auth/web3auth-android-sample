@@ -518,4 +518,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleUtils.onAttach(base))
+    }
 }

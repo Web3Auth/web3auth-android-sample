@@ -1,5 +1,6 @@
 package com.web3auth.wallet
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -23,8 +24,6 @@ class SplashActivity : AppCompatActivity() {
         setTheme(theme)
         setContentView(R.layout.activity_splash)
         supportActionBar?.hide()
-        val locale = Web3AuthUtils.getSystemLocale()
-        setLocale(locale)
         if (isLangChanged) {
             val language =
                 this.applicationContext.web3AuthWalletPreferences.getString(LANGUAGE, "English")
@@ -32,7 +31,7 @@ class SplashActivity : AppCompatActivity() {
             setLang(language)
         }
         GlobalScope.launch {
-            delay(500)
+            delay(100)
             navigate()
         }
     }
@@ -83,5 +82,9 @@ class SplashActivity : AppCompatActivity() {
             configuration,
             baseContext.resources.displayMetrics
         )
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleUtils.onAttach(base))
     }
 }

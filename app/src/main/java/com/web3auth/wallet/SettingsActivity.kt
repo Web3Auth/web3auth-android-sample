@@ -1,5 +1,6 @@
 package com.web3auth.wallet
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import com.web3auth.wallet.utils.*
+import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -60,10 +62,8 @@ class SettingsActivity : AppCompatActivity() {
         spLanguage.setAdapter(langAdapter)
         spLanguage.setOnItemClickListener { _, _, position, _ ->
             this.applicationContext.web3AuthWalletPreferences[IS_LANGUAGE_CHANGED] = true
-            this.applicationContext.web3AuthWalletPreferences[LANGUAGE] =
-                languages[position]
-            LocaleUtils.setLocale(this.applicationContext, languages[position])
-            restartApp()
+            this.applicationContext.web3AuthWalletPreferences[LANGUAGE] = languages[position]
+            setLocale(LocaleUtils.getLocaleString(languages[position]))
         }
 
         spTheme.setText(theme)
@@ -94,10 +94,20 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-    private fun restartApp() {
-        val intent = Intent(this, SplashActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intent)
-        Runtime.getRuntime().exit(0)
+    private fun setLocale(localeName: String) {
+        val context: Context = LocaleUtils.setLocale(this, localeName)
+        val myLocale = Locale(localeName)
+        val res = context.resources
+        val dm = res.displayMetrics
+        val conf = res.configuration
+        conf.locale = myLocale
+        res.updateConfiguration(conf, dm)
+        val refreshIntent = Intent(this, MainActivity::class.java)
+        refreshIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(refreshIntent)
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleUtils.onAttach(base))
     }
 }

@@ -1,6 +1,7 @@
 package com.web3auth.wallet
 
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -626,5 +627,9 @@ class TransferAssetsActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         viewModelStore.clear()
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleUtils.onAttach(base))
     }
 }

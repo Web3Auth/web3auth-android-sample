@@ -5,9 +5,24 @@ import android.os.Build
 import android.preference.PreferenceManager
 import java.util.*
 
-
 object LocaleUtils {
     private const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"
+
+    fun onAttach(context: Context): Context {
+        val lang: String = getPersistedData(
+            context,
+            Locale.getDefault().language
+        )
+        return setLocale(context, lang)
+    }
+
+    fun onAttach(context: Context, defaultLanguage: String): Context {
+        val lang: String = getPersistedData(
+            context,
+            defaultLanguage
+        )
+        return setLocale(context, lang)
+    }
 
     fun setLocale(context: Context, language: String): Context {
         persist(context, language)
@@ -17,6 +32,14 @@ object LocaleUtils {
             updateResources(context, language)
         } else updateResourcesLegacy(context, language)
         // for devices having lower version of android os
+    }
+
+    private fun getPersistedData(context: Context, defaultLanguage: String): String {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        return preferences.getString(
+            SELECTED_LANGUAGE,
+            defaultLanguage
+        ).toString()
     }
 
     private fun persist(context: Context, language: String) {
@@ -44,5 +67,18 @@ object LocaleUtils {
         configuration.setLayoutDirection(locale)
         resources.updateConfiguration(configuration, resources.displayMetrics)
         return context
+    }
+
+    fun getLocaleString(language: String): String {
+        var localeString = ""
+        when (language) {
+            "English" -> localeString = "en"
+            "German" -> localeString = "de"
+            "Spanish" -> localeString = "es"
+            "Japanese" -> localeString = "ja"
+            "Korean" -> localeString = "ko"
+            "Mandarin" -> localeString = "zh"
+        }
+        return localeString
     }
 }
