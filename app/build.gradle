@@ -10,7 +10,7 @@ android {
         applicationId "com.web3auth.wallet"
         minSdk 26
         targetSdk 33
-        versionCode 8
+        versionCode 9
         versionName "0.0.2"
         manifestPlaceholders = [
                 'torusRedirectScheme'    : 'torusapp',
